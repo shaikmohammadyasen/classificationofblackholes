@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Black Hole Classifier</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔭 Black Hole Classification</h1>
+        <form method="POST">
+            <label>Mass (in Solar Masses):</label>
+            <input type="number" step="any" name="mass" required>
+
+            <label>Error Rate (%):</label>
+            <input type="number" step="any" name="error" required>
+
+            <label>Accretion State:</label>
+            <select name="accretion" required>
+                <option value="Low/Hard">Low/Hard</option>
+                <option value="High/Soft">High/Soft</option>
+                <option value="Intermediate">Intermediate</option>
+            </select>
+
+            <button type="submit">Classify</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h2>🔍  Classification Result</h2>
+            <p><strong>Mass:</strong> {{ result.mass }} M☉</p>
+            <p><strong>Error:</strong> ±{{ result.error }}%</p>
+            <p><strong>Accretion State:</strong> {{ result.accretion }}</p>
+            <p><strong>Classified as:</strong> <span>{{ result.type }}</span></p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
